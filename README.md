@@ -1,0 +1,1 @@
+# adoizshop.com.aliz
