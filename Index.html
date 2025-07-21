@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adioz Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+    }
+    .header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #f9f9f9;
+      position: relative;
+    }
+    .header h1 {
+      font-size: 3em;
+      color: #253647;
+      font-weight: bold;
+    }
+    .header h1 span {
+      font-style: italic;
+    }
+    .header .star {
+      font-size: 2em;
+      color: #253647;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .big-button {
+      display: inline-block;
+      padding: 20px 30px;
+      margin: 20px;
+      font-size: 1.5em;
+      background-color: #253647;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .info-box {
+      background: #eef1f4;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .pet-list div {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    .hidden-price {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="star">✴️</div>
+    <h1>Welcome to <span>Adioz</span> Shop</h1>
+    <hr />
+  </div>
+
+  <div class="section">
+    <div class="info-box">
+      <p><strong>🚨 This website is 100% trusted!</strong> We giveaway Robux, pets, and more!</p>
+      <p>Shout out to <strong>Mr. hamburger112364</strong> for helping us build this beautiful website!</p>
+      <p>If you're interested in buying pets or Robux, we're here for you. <br/>Confused? <strong>Contact us anytime!</strong></p>
+    </div>
+
+    <button class="big-button" onclick="showRobux()">🎁 Robux Top-up</button>
+    <div id="robuxBox" class="info-box" style="display:none">
+      <p>Enter the amount of Robux (Max: 100,000):</p>
+      <input type="number" max="100000" placeholder="Robux amount" />
+    </div>
+
+    <button class="big-button" onclick="showPets()">🐾 Pets</button>
+    <div id="petsBox" class="pet-list info-box" style="display:none">
+      <div onclick="togglePrice(this)">774T <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Cooked Owl <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Blood Owl <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Night Owl <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Moon Cat <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Moth <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Praying Mantis <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Turtle <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Bear Bee <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Scarlet Macow <span class="hidden-price">- Rs 100</span></div>
+      <div onclick="togglePrice(this)">Capybara <span class="hidden-price">- Rs 150</span></div>
+      <div onclick="togglePrice(this)">Red Fox <span class="hidden-price">- Rs 200</span></div>
+      <div onclick="togglePrice(this)">Chicken Zombie <span class="hidden-price">- Rs 200</span></div>
+      <div onclick="togglePrice(this)">Queen Bee <span class="hidden-price">- Rs 350</span></div>
+      <div onclick="togglePrice(this)">Raccoon <span class="hidden-price">- Rs 900</span></div>
+      <div onclick="togglePrice(this)">Dragonfly <span class="hidden-price">- Rs 600</span></div>
+      <div onclick="togglePrice(this)">Disco Bee <span class="hidden-price">- Rs 850</span></div>
+      <div onclick="togglePrice(this)">Butterfly <span class="hidden-price">- Rs 650</span></div>
+      <div onclick="togglePrice(this)">Mimic Octopus <span class="hidden-price">- Rs 450</span></div>
+      <div onclick="togglePrice(this)">Fenec Fox <span class="hidden-price">- Rs 1200</span></div>
+      <div onclick="togglePrice(this)">Trex <span class="hidden-price">- Rs 750</span></div>
+      <div onclick="togglePrice(this)">Brono <span class="hidden-price">- Rs 300</span></div>
+    </div>
+
+    <button class="big-button" onclick="showGiveaway()">🎁💰 Giveaway</button>
+    <div id="giveawayBox" class="info-box" style="display:none">
+      <p>Enter your username to join the giveaway:</p>
+      <input type="text" id="giveawayName" placeholder="Your username" />
+      <button onclick="joinGiveaway()">Join</button>
+      <div id="chatBox"></div>
+    </div>
+
+    <div class="section">
+      <h2>🌱 Grow a Garden</h2>
+      <p>Growing a garden is a journey of patience, care, and love. It teaches responsibility and brings a sense of calm and satisfaction. Watching flowers bloom and vegetables grow from tiny seeds is a magical experience. Whether you're in a city or the countryside, gardens add color and peace to life.
+      </p>
+      <p>At Adioz Shop, we also encourage users to take care of the digital world like a garden—nurture your community, grow your skills, and help others. Like every plant needs water and sunlight, our shop thrives on kindness and positivity!</p>
+    </div>
+  </div>
+
+  <script>
+    function showRobux() {
+      document.getElementById('robuxBox').style.display = 'block';
+    }
+    function showPets() {
+      document.getElementById('petsBox').style.display = 'block';
+    }
+    function togglePrice(el) {
+      const price = el.querySelector('.hidden-price');
+      price.style.display = price.style.display === 'inline' ? 'none' : 'inline';
+    }
+    function showGiveaway() {
+      document.getElementById('giveawayBox').style.display = 'block';
+    }
+    function joinGiveaway() {
+      const username = document.getElementById('giveawayName').value;
+      const badWords = ['badword1', 'badword2'];
+      if (badWords.some(word => username.toLowerCase().includes(word))) {
+        alert('Bad word detected!');
+        return;
+      }
+      const chat = document.getElementById('chatBox');
+      const msg = document.createElement('p');
+      msg.textContent = `${username} has joined the giveaway!`;
+      chat.appendChild(msg);
+    }
+  </script>
+</body>
+</html>
